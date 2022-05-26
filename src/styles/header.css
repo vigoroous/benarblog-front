@@ -1,0 +1,54 @@
+.header {
+    background-color: #FFFFFF;
+    height: 90px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    border-bottom: rgb(231, 232, 236) solid 1px;
+}
+
+.header__wrap {
+    display: flex;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: inherit;
+}
+
+.header__logo {
+    height: 50px;
+}
+
+.header__search-field {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    border-radius: 8px;
+    outline: none;
+    border: 0;
+    background-color: #EDEEF0;
+    height: 42px;
+    width: 378px;
+    padding: 12px 32px;
+    margin-left: 150px;
+}
+
+.header__login-button {
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #0077FF;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.header__login-button:hover {
+    background-color: #1F88FF;
+}
+
+.header__login-button-link {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #FFFFFF;
+    padding: 11px 20px;
+}
