@@ -1,5 +1,8 @@
 import React, { FC, useRef, useState } from "react"
 import { NavLink } from "react-router-dom";
+import { useAuth } from "context/AuthContextProvider";
+import Content from "components/Content";
+
 import 'styles/auth-form.css'
 
 
@@ -18,6 +21,8 @@ type DataType = {
 }
 
 const Login: FC = () => {
+    const { setToken } = useAuth();
+
     const form = useRef<HTMLFormElement>(null)
     const [buttonState, setButtonState] = useState(false)
 
@@ -26,12 +31,7 @@ const Login: FC = () => {
         if (!form.current) return
         const formData = new FormData(form.current)
 
-        //FormData to JSON conversion
-        const temp: any = {};
-        for (const [key, value] of Array.from(formData.entries())) {
-            temp[key] = value;
-        }
-        const jsonData = JSON.stringify(temp);
+        const jsonData = JSON.stringify(Object.fromEntries(formData));
 
         form.current.reset()
         setButtonState(true)
@@ -46,16 +46,15 @@ const Login: FC = () => {
                     throw new Error("failed to get...")
             })
             .then((data: DataType) => {
-                console.log(data.account.token)
-                setButtonState(false)
+                console.log(data.account.token);
+                setToken(data.account.token);
+                setButtonState(false);
             })
-            
             .catch(e => console.log(e))
-        
     }
 
     return (
-        <main className="login content">
+        <Content>
             <div className="auth-wrapper">
                 <form className="auth-form" ref={form} onSubmit={handleSubmit}>
                     <h1 className="auth-form__title">Вход</h1>
@@ -72,7 +71,7 @@ const Login: FC = () => {
                     </div>
                 </div>
             </div>
-        </main>
+        </Content>
     );
 }
 

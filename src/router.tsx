@@ -4,6 +4,7 @@ import Layout from "components/Layout"
 import Home from "pages/Home"
 import Login from "pages/Login"
 import Signup from "pages/Signup"
+import Contacts from "pages/Contacts"
 
 
 const AppRouter: FC = () => {
@@ -17,6 +18,9 @@ const AppRouter: FC = () => {
             </Route>
             <Route element={<Layout />}>
                 <Route path="/signup" element={<Signup />} />
+            </Route>
+            <Route element={<Layout />}>
+                <Route path="/contacts" element={<Contacts />} />
             </Route>
         </Routes>
     )

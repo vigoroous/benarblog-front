@@ -1,0 +1,12 @@
+.content {
+    box-sizing: border-box;
+    min-height: calc(100vh - 90px);
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+.content__wrap {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+}

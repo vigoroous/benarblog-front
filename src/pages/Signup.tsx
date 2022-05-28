@@ -1,10 +1,11 @@
 import React, { FC } from "react"
 import { NavLink } from "react-router-dom";
+import Content from "components/Content";
 
 
 const Signup: FC = () => {
     return (
-        <main className="signup content">
+        <Content>
             <div className="auth-wrapper">
                 <form className="auth-form">
                     <h1 className="auth-form__title">Регистрация</h1>
@@ -19,7 +20,7 @@ const Signup: FC = () => {
                     </div>
                 </div>
             </div>
-        </main>
+        </Content>
     );
 }
 
