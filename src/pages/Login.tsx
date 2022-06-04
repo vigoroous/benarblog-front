@@ -1,7 +1,6 @@
 import React, { FC, useRef, useState } from "react"
 import { NavLink } from "react-router-dom";
-import { useAuth } from "context/AuthContextProvider";
-import Content from "components/Content";
+import { useAuth } from "providers/AuthProvider";
 
 import 'styles/auth-form.css'
 
@@ -21,7 +20,7 @@ type DataType = {
 }
 
 const Login: FC = () => {
-    const { setToken } = useAuth();
+    const { dispatch } = useAuth();
 
     const form = useRef<HTMLFormElement>(null)
     const [buttonState, setButtonState] = useState(false)
@@ -47,31 +46,28 @@ const Login: FC = () => {
             })
             .then((data: DataType) => {
                 console.log(data.account.token);
-                setToken(data.account.token);
+                // setToken(data.account.token);
+                dispatch({ type: "LOGIN", payload: { token: data.account.token, isAuth: true } })
                 setButtonState(false);
             })
             .catch(e => console.log(e))
     }
 
     return (
-        <Content>
-            <div className="auth-wrapper">
-                <form className="auth-form" ref={form} onSubmit={handleSubmit}>
-                    <h1 className="auth-form__title">Вход</h1>
-                    <input className="auth-form__input" type="email" name="email" placeholder="Email" />
-                    <input className="auth-form__input" type="password" name="password" placeholder="Пароль" />
-                    <button className="auth-form__submit-button" type="submit" disabled={buttonState}>Войти</button>
-                </form>
-                <div className="auth-nav">
-                    <div className="auth-nav__to-signup">
-                        <NavLink to={"/signup"} className="auth-nav__to-signup-link">Регистрация</NavLink>
-                    </div>
-                    <div className="auth-nav__forgot-pass">
-                        <NavLink to={"/forgot"} className="auth-nav__forgot-pass-link">Забыли пароль?</NavLink>
-                    </div>
+        <form className="auth-form" ref={form} onSubmit={handleSubmit}>
+            <h1 className="auth-form__title">Вход</h1>
+            <input className="auth-form__input" type="email" name="email" placeholder="Email" />
+            <input className="auth-form__input" type="password" name="password" placeholder="Пароль" />
+            <button className="auth-form__submit-button" type="submit" disabled={buttonState}>Войти</button>
+            <div className="auth-nav">
+                <div className="auth-nav__to-signup">
+                    <NavLink to={"/signup"} className="auth-nav__to-signup-link">Регистрация</NavLink>
+                </div>
+                <div className="auth-nav__forgot-pass">
+                    <NavLink to={"/forgot"} className="auth-nav__forgot-pass-link">Забыли пароль?</NavLink>
                 </div>
             </div>
-        </Content>
+        </form>
     );
 }
 

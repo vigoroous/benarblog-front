@@ -1,76 +1,78 @@
-import React, { FC, useRef, useState } from "react"
-import { useAuth } from "context/AuthContextProvider";
+import React, { FC, useEffect, useState } from "react"
+import { useAuth } from "providers/AuthProvider";
 import 'styles/home.css'
-import Content from "components/Content";
-import Sidebar from "components/Sidebar";
+import { IconSubscribe, IconLike, IconComment } from "icons/ui-post";
 
-
-export type DataType = {
-    "data": ContactsType[],
-    "message": string,
-    "status": boolean
-}
-
-export type ContactsType = {
-    "ID": number,
-    "CreatedAt": string,
-    "UpdatedAt": string,
-    "DeletedAt": string,
-    "name": string,
-    "phone": string,
-    "user_id": number
-}
 
 const Home: FC = () => {
-    const { token } = useAuth();
+    // const { token } = useAuth();
 
-    const form = useRef<HTMLFormElement>(null)
-    const [buttonState, setButtonState] = useState(false)
+    // const [data, setData] = useState<DataType>();
 
-    const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
-        event.preventDefault()
-        if (!form.current) return
-        const formData = new FormData(form.current)
+    // useEffect(() => {
+    //     fetch(`${process.env.REACT_APP_API_HOST}/api/posts/contacts`, {
+    //         credentials: "include",
+    //         method: 'GET',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Authorization': `Bearer ${token}`, //doesn't work
+    //         },
+    //     })
+    //         .then(res => {
+    //             if (res.ok)
+    //                 return res.json()
+    //             else
+    //                 throw new Error("failed to get...")
+    //         })
+    //         .then((data: DataType) => {
+    //             console.log(data.message);
+    //             setData(data)
+    //         })
+    //         .catch(e => console.log(e))
+    // }, [])
 
-        const jsonData = JSON.stringify(Object.fromEntries(formData));
-
-        form.current.reset()
-        setButtonState(true)
-
-        fetch(`${process.env.REACT_APP_API_HOST}/api/contacts/new`, {
-            credentials: "include",
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
-            },
-            body: jsonData,
-        })
-            .then(res => {
-                if (res.ok)
-                    return res.json()
-                else
-                    throw new Error("failed to get...")
-            })
-            .then((data: DataType) => {
-                console.log(data.message);
-                setButtonState(false);
-            })
-            .catch(e => console.log(e))
-    }
+    // if (!data) return (
+    //     <div>Loading...</div>
+    // )
 
     return (
-        <Content>
-            <Sidebar></Sidebar>
-            <div className="auth-wrapper">
-                <form className="auth-form" ref={form} onSubmit={handleSubmit}>
-                    <h1 className="auth-form__title">Новый контакт</h1>
-                    <input className="auth-form__input" type="text" name="name" placeholder="Имя" />
-                    <input className="auth-form__input" type="text" name="phone" placeholder="Телефон" />
-                    <button className="auth-form__submit-button" type="submit" disabled={buttonState}>Создать</button>
-                </form>
+        <div className="posts-entry">
+            <div className="post">
+                <div className="post__header">
+                    <div className="post__header-author">
+                        <div className="post__header-author-avatar"></div>
+                        <div className="post__header-author-name">Blog Name</div>
+                    </div>
+                    <div className="post__header-date">5 часов</div>
+                    <button className="post__header-subscribe">
+                        <IconSubscribe />
+                        <span className="post__header-subscribe-label">Подписаться</span>
+                    </button>
+                </div>
+                <div className="post__content">
+                    <div className="post__content-title">Тема новости</div>
+                    <div className="post__content-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                        anim id est laborum.
+                    </div>
+                    <div className="post__content-image"></div>
+                </div>
+                <div className="post__footer">
+                    <div className="post__footer-likes">
+                        <IconLike />
+                        <div className="post__footer-likes-count">27</div>
+                    </div>
+                    <div className="post__footer-comments">
+                        <IconComment />
+                        <div className="post__footer-comments-count">159</div>
+                    </div>
+                </div>
             </div>
-        </Content>
+        </div>
     );
 }
 

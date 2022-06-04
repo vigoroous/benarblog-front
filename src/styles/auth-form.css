@@ -1,15 +1,11 @@
-.auth-wrapper {
-    margin: 120px auto 30px;
-    width: 340px;
-    display: flex;
-    flex-direction: column;
+.auth-form {
     padding: 32px 40px;
     border-radius: 6px;
-    box-shadow: rgb(220, 225, 230) 0px 1px 0px 0px, rgb(231, 232, 236) 0px 0px 0px 1px;
+    box-shadow: rgb(220 225 230) 0px 1px 0px 0px, rgb(231 232 236) 0px 0px 0px 1px;
     background-color: #FFFFFF;
+    width: 340px;
+    margin: 120px auto 30px;
 }
-
-/* .auth-form {} */
 
 .auth-form__title {
     font-family: 'Inter', sans-serif;

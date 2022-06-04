@@ -5,6 +5,7 @@ import Home from "pages/Home"
 import Login from "pages/Login"
 import Signup from "pages/Signup"
 import Contacts from "pages/Contacts"
+import Create from "pages/Create"
 
 
 const AppRouter: FC = () => {
@@ -20,7 +21,19 @@ const AppRouter: FC = () => {
                 <Route path="/signup" element={<Signup />} />
             </Route>
             <Route element={<Layout />}>
-                <Route path="/contacts" element={<Contacts />} />
+                <Route path="/popular" element={<Contacts />} />
+            </Route>
+            <Route element={<Layout />}>
+                <Route path="/new" element={<Contacts />} />
+            </Route>
+            <Route element={<Layout />}>
+                <Route path="/subs" element={<Contacts />} />
+            </Route>
+            <Route element={<Layout />}>
+                <Route path="/likes" element={<Contacts />} />
+            </Route>
+            <Route element={<Layout />}>
+                <Route path="/create" element={<Create />} />
             </Route>
         </Routes>
     )

@@ -1,21 +1,13 @@
-.footer {
-    background-color: #232629;
-    height: 90px;
-}
+/* .footer {} */
 
 .footer__wrap {
-    align-items: center;
-    display: flex;
-    max-width: 1400px;
-    margin: 0 auto;
-    height: inherit;
-    justify-content: center;
+    margin: 0 20px;
 }
 
 .footer__copyright {
     font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    line-height: 20px;
+    font-size: 16px;
+    line-height: 24px;
     letter-spacing: 0.2px;
-    color: #FFFFFF;
+    color: #222222;
 }

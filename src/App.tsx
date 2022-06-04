@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import AppRouter from 'router';
-import AuthContextProvider from 'context/AuthContextProvider';
+import AuthProvider from 'providers/AuthProvider';
 
 const App: FC = () => {
   return (
-    <AuthContextProvider>
+    <AuthProvider>
       <BrowserRouter>
         <AppRouter />
       </BrowserRouter>
-    </AuthContextProvider>
+    </AuthProvider>
   );
 }
 

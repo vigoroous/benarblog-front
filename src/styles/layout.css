@@ -1,0 +1,18 @@
+.layout {
+    display: flex;
+    flex: 1;
+    width: 100%;
+}
+
+.layout__left-column {
+    flex-shrink: 0;
+    position: sticky;
+    top: 60px;
+    height: calc(100vh - 60px);
+    width: 220px;
+}
+
+.layout__content {
+    flex-grow: 1;
+    padding-right: 220px;
+}

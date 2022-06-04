@@ -1,22 +1,36 @@
 .header {
     background-color: #FFFFFF;
-    height: 90px;
-    position: fixed;
+    /* height: 90px; */
+    height: 60px;
+    position: sticky;
     top: 0;
     width: 100%;
-    border-bottom: rgb(231, 232, 236) solid 1px;
+    /* border-bottom: rgb(231, 232, 236) solid 1px; */
 }
 
 .header__wrap {
     display: flex;
     align-items: center;
-    max-width: 1400px;
-    margin: 0 auto;
+    /* max-width: 1400px; */
+    /* margin: 0 auto; */
+    padding: 0 20px;
     height: inherit;
+    justify-content: space-between;
 }
 
 .header__logo {
-    height: 50px;
+    height: 40px;
+}
+
+.header__logo-image {
+    height: 40px;
+}
+
+.header__section-center {
+    display: flex;
+    width: 640px;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .header__search-field {
@@ -29,26 +43,64 @@
     background-color: #EDEEF0;
     height: 42px;
     width: 378px;
-    padding: 12px 32px;
-    margin-left: 150px;
+    /* padding: 12px 32px; */
+    padding-left: 44px;
+    /* margin-left: 150px; */
+    background-image: url(../icons/search.svg);
+    background-repeat: no-repeat;
+    background-position: 14px;
+    /* background-size: 16px; */
 }
 
-.header__login-button {
-    overflow: hidden;
-    border-radius: 8px;
-    background-color: #0077FF;
+.header__search-field::placeholder {
+    color: #818C99;
+}
+
+.header__section-right {
+    /* width: 190px; */
+}
+
+.header__button {
+    height: 40px;
     cursor: pointer;
-    margin-left: auto;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-.header__login-button:hover {
-    background-color: #1F88FF;
+.header__button_create {
+    background-color: #B4DBFF;
 }
 
-.header__login-button-link {
+.header__button_create:hover {
+    box-shadow: inset 0 -1px 0 0 rgb(0 0 0 / 6%), 0 2px 4px 0 rgb(0 0 0 / 8%);
+}
+
+.header__button-link {
+    display: flex;
+    align-items: center;
+    flex-grow: 2;
+    padding-left: 11px;
+    padding-right: 16px;
+    height: 100%;
+}
+
+.header__button-link:hover {
+    color: #1F88FF;
+    fill: #1F88FF;
+}
+
+.header__button_create>.header__button-link:hover {
+    color: unset;
+    fill: unset;
+}
+
+.header__button-link-icon {
+    margin-right: 4px;
+}
+
+.header__button-link-name {
     display: inline-block;
     font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    color: #FFFFFF;
-    padding: 11px 20px;
+    font-weight: 500;
+    /* color: #FFFFFF; */
 }
